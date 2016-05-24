@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 23, 2016 5:14:24 PM by Hibernate Tools 5.0.0.Alpha3 -->
+<hibernate-mapping>
+    <class name="User" table="user" catalog="sharemyridewebservice" optimistic-lock="version">
+        <id name="userId" type="java.lang.Long">
+            <column name="USER_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="firstname" type="string">
+            <column name="FIRSTNAME" length="30" />
+        </property>
+        <property name="lastname" type="string">
+            <column name="LASTNAME" length="30" />
+        </property>
+        <property name="gender" type="string">
+            <column name="GENDER" length="1" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="30" />
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" length="30" />
+        </property>
+        <property name="facebookId" type="string">
+            <column name="FACEBOOK_ID" length="35" />
+        </property>
+        <property name="googleId" type="string">
+            <column name="GOOGLE_ID" length="35" />
+        </property>
+        <property name="twitterId" type="string">
+            <column name="TWITTER_ID" length="35" />
+        </property>
+        <property name="birthdate" type="time">
+            <column name="BIRTHDATE" length="8" />
+        </property>
+        <property name="contact" type="string">
+            <column name="CONTACT" length="30" />
+        </property>
+        <property name="address1" type="string">
+            <column name="ADDRESS1" length="30" />
+        </property>
+        <property name="address2" type="string">
+            <column name="ADDRESS2" length="30" />
+        </property>
+        <property name="city" type="string">
+            <column name="CITY" length="30" />
+        </property>
+        <property name="state" type="string">
+            <column name="STATE" length="30" />
+        </property>
+        <property name="country" type="string">
+            <column name="COUNTRY" length="30" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="CREATED" length="19" not-null="true" />
+        </property>
+        <property name="createdBy" type="string">
+            <column name="CREATED_BY" length="30" />
+        </property>
+        <property name="modified" type="timestamp">
+            <column name="MODIFIED" length="19" not-null="true" />
+        </property>
+        <property name="modifiedBy" type="string">
+            <column name="MODIFIED_BY" length="30" />
+        </property>
+    </class>
+</hibernate-mapping>
