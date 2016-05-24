@@ -17,8 +17,9 @@ import org.apache.commons.logging.LogFactory;
 import org.arpit.java2blog.bean.User;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 /**
  * Home object for domain model class User.
@@ -26,12 +27,14 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author Hibernate Tools
  */
 
-
+@Repository
+@Service
 public class UserService {
 
 	private static final Log log = LogFactory.getLog(UserService.class);
 
-	private final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+	@Autowired
+	private SessionFactory sessionFactory;
 	
 	//new Configuration().configure().buildSessionFactory();
 
@@ -134,10 +137,11 @@ public class UserService {
 	public List<User> findAll(Class clazz) {
 		log.debug("finding User instance by example");
 		try {
-			List<User> results = (List<User>) (sessionFactory.getCurrentSession().createQuery("from " + clazz.getName()).list());
-			log.debug("find by example successful, result size: " + results.size());
+			return this.sessionFactory.getCurrentSession().createQuery("from User").list();
+			//List<User> results = (List<User>) (sessionFactory.getCurrentSession().createQuery("from " + clazz.getName()).list());
+			//log.debug("find by example successful, result size: " + results.size());
 								
-			return results;
+			//return results;
 		} catch (RuntimeException re) {
 			log.error("find by example failed", re);
 			throw re;
