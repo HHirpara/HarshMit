@@ -16,10 +16,16 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.arpit.java2blog.bean.User;
 import org.hibernate.LockMode;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+
 
 /**
  * Home object for domain model class User.
@@ -33,10 +39,9 @@ public class UserService {
 
 	private static final Log log = LogFactory.getLog(UserService.class);
 
+
 	@Autowired
-	private SessionFactory sessionFactory;
-	
-	//new Configuration().configure().buildSessionFactory();
+	private SessionFactory sessionFactory = new Configuration()/*.addFile("user.hbm.xml")*/.configure("hibernate.cfg.xml").buildSessionFactory();
 
 	protected SessionFactory getSessionFactory() {
 		try {
@@ -106,13 +111,15 @@ public class UserService {
 	public User findById(java.lang.Long id) {
 		log.debug("getting User instance with id: " + id);
 		try {
-			User instance = (User) sessionFactory.getCurrentSession().get("User", id);
-			if (instance == null) {
-				log.debug("get successful, no instance found");
-			} else {
-				log.debug("get successful, instance found");
-			}
-			return instance;
+			
+			Session session = sessionFactory.getCurrentSession();
+			Transaction tx = session.beginTransaction();
+			User user = (User) session.get(User.class, id);
+			tx.commit();
+			
+			return user;
+			
+			
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
 			throw re;
@@ -137,37 +144,18 @@ public class UserService {
 	public List<User> findAll(Class clazz) {
 		log.debug("finding User instance by example");
 		try {
-			return this.sessionFactory.getCurrentSession().createQuery("from User").list();
-			//List<User> results = (List<User>) (sessionFactory.getCurrentSession().createQuery("from " + clazz.getName()).list());
-			//log.debug("find by example successful, result size: " + results.size());
-								
-			//return results;
+
+			List<User> users = new ArrayList<User>();
+			Session session = sessionFactory.getCurrentSession();
+			Transaction tx = session.beginTransaction();
+			System.out.println("ready....");
+			users = session.createCriteria(User.class).list();
+			tx.commit();
+			return users;
 		} catch (RuntimeException re) {
 			log.error("find by example failed", re);
 			throw re;
 		}
 	}
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public List<User> findAllJSON(Class clazz) {
-		log.debug("finding User instance by example");
-		try {
-			List<User> results = (List<User>) (sessionFactory.getCurrentSession().createQuery("from " + clazz.getName()).list());
-			log.debug("find by example successful, result size: " + results.size());
-								
-			 HashMap<Long,User> userJSON = new HashMap<>();
-			 
-			 for (User user : results) {
-				 userJSON.put(user.getUserId(), user);
-			    }
-
-			 List<User> users = new ArrayList<User>(userJSON.values());
-			 
-			return users;
-			
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
 }

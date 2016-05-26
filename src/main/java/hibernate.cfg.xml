@@ -3,17 +3,19 @@
 "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory name="SessionFact">
+    <session-factory>
     	<property name="jndi.class">com.sun.jndi.fscontext.RefFSContextFactory</property>
-        <property name="jndi.url">file:///tmp</property>
-        <property name="hibernate.session_factory_name">hibernate/HibernateFactory</property>
+        <property name="jndi.url">E:/My Study/Project/JNDIlog.txt</property>
+        <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/sharemyridewebservice</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
         <property name="hibernate.validator.apply_to_ddl">false</property>
+        
         <mapping resource="org/arpit/java2blog/bean/User.hbm.xml" />
     </session-factory>
 </hibernate-configuration>
