@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 1, 2016 6:31:43 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.arpit.java2blog.bean.VehicleMakeMaster" table="vehicle_make_master" catalog="sharemyridewebservice">
+        <id name="vehicleId" type="java.lang.Long">
+            <column name="VEHICLE_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="receivedVehicleId" type="string">
+            <column name="RECEIVED_VEHICLE_ID" length="30" not-null="true" unique="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="NAME" length="30" />
+        </property>
+        <property name="niceName" type="string">
+            <column name="NICE_NAME" length="30" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="CREATED" length="19" not-null="true" />
+        </property>
+        <property name="createdBy" type="string">
+            <column name="CREATED_BY" length="30" />
+        </property>
+        <property name="modified" type="timestamp">
+            <column name="MODIFIED" length="19" not-null="true" />
+        </property>
+        <property name="modifiedBy" type="string">
+            <column name="MODIFIED_BY" length="30" />
+        </property>
+        <set name="vehicleModelMastersForVehicleId" table="vehicle_model_master" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="VEHICLE_ID" />
+            </key>
+            <one-to-many class="org.entity.VehicleModelMaster" />
+        </set>
+        <set name="vehicleModelMastersForReceivedVehicleId" table="vehicle_model_master" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="RECEIVED_VEHICLE_ID" />
+            </key>
+            <one-to-many class="org.entity.VehicleModelMaster" />
+        </set>
+    </class>
+</hibernate-mapping>
