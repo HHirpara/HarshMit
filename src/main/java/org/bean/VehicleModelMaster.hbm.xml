@@ -3,25 +3,22 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Jun 1, 2016 6:31:43 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="org.arpit.java2blog.bean.VehicleModelMaster" table="vehicle_model_master" catalog="sharemyridewebservice">
+    <class name="org.bean.VehicleModelMaster" table="vehicle_model_master" catalog="sharemyridewebservice">
         <id name="modelId" type="java.lang.Long">
             <column name="MODEL_ID" />
             <generator class="identity" />
         </id>
-        <many-to-one name="vehicleMakeMasterByVehicleId" class="org.entity.VehicleMakeMaster" fetch="select">
+        <many-to-one name="vehicleMakeMasterByVehicleId" class="org.bean.VehicleMakeMaster" fetch="select">
             <column name="VEHICLE_ID" />
         </many-to-one>
-        <many-to-one name="vehicleMakeMasterByReceivedVehicleId" class="org.entity.VehicleMakeMaster" fetch="select">
-            <column name="RECEIVED_VEHICLE_ID" />
-        </many-to-one>
         <property name="modelName" type="string">
-            <column name="MODEL_NAME" length="45" not-null="true" />
+            <column name="MODEL_NAME" length="80" not-null="true" />
         </property>
         <property name="modelCode" type="string">
-            <column name="MODEL_CODE" length="30" not-null="true" />
+            <column name="MODEL_CODE" length="80" not-null="true" />
         </property>
         <property name="receivedModelId" type="string">
-            <column name="RECEIVED_MODEL_ID" length="30" not-null="true" />
+            <column name="RECEIVED_MODEL_ID" length="80" not-null="true" />
         </property>
         <property name="createdBy" type="string">
             <column name="CREATED_BY" length="30" />

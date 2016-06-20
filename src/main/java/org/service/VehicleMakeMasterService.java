@@ -147,4 +147,34 @@ public class VehicleMakeMasterService {
 			throw re;
 		}
 	}
+	
+	public VehicleMakeMaster save(VehicleMakeMaster instance) {
+		log.debug("attaching clean VehicleMakeMaster instance");
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			Transaction tx = session.beginTransaction();
+			session.save(instance);
+			tx.commit();
+			log.debug("attach successful");
+		} catch (RuntimeException re) {
+			log.error("attach failed", re);
+			throw re;
+		}
+		return instance;
+	}
+	
+	public VehicleMakeMaster update(VehicleMakeMaster instance) {
+		log.debug("attaching clean VehicleMakeMaster instance");
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			Transaction tx = session.beginTransaction();
+			session.update(instance);
+			tx.commit();
+			log.debug("attach successful");
+		} catch (RuntimeException re) {
+			log.error("attach failed", re);
+			throw re;
+		}
+		return instance;
+	}
 }

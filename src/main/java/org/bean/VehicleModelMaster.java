@@ -7,6 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -27,8 +30,13 @@ public class VehicleModelMaster implements java.io.Serializable {
 	@GeneratedValue 
 	private Long modelId;
 	
+	@ManyToOne
+	@JoinColumns({
+        @JoinColumn(name = "VEHICLE_ID", referencedColumnName = "VEHICLE_ID"),
+        @JoinColumn(name = "RECEIVED_VEHICLE_ID", referencedColumnName = "RECEIVED_VEHICLE_ID")
+    })
 	private VehicleMakeMaster vehicleMakeMasterByVehicleId;
-	private VehicleMakeMaster vehicleMakeMasterByReceivedVehicleId;
+	
 	private String modelName;
 	private String modelCode;
 	private String receivedModelId;
@@ -47,10 +55,9 @@ public class VehicleModelMaster implements java.io.Serializable {
 	}
 
 	public VehicleModelMaster(VehicleMakeMaster vehicleMakeMasterByVehicleId,
-			VehicleMakeMaster vehicleMakeMasterByReceivedVehicleId, String modelName, String modelCode,
+			String modelName, String modelCode,
 			String receivedModelId, String createdBy, Date created, String modifiedBy, Date modified) {
 		this.vehicleMakeMasterByVehicleId = vehicleMakeMasterByVehicleId;
-		this.vehicleMakeMasterByReceivedVehicleId = vehicleMakeMasterByReceivedVehicleId;
 		this.modelName = modelName;
 		this.modelCode = modelCode;
 		this.receivedModelId = receivedModelId;
@@ -74,14 +81,6 @@ public class VehicleModelMaster implements java.io.Serializable {
 
 	public void setVehicleMakeMasterByVehicleId(VehicleMakeMaster vehicleMakeMasterByVehicleId) {
 		this.vehicleMakeMasterByVehicleId = vehicleMakeMasterByVehicleId;
-	}
-
-	public VehicleMakeMaster getVehicleMakeMasterByReceivedVehicleId() {
-		return this.vehicleMakeMasterByReceivedVehicleId;
-	}
-
-	public void setVehicleMakeMasterByReceivedVehicleId(VehicleMakeMaster vehicleMakeMasterByReceivedVehicleId) {
-		this.vehicleMakeMasterByReceivedVehicleId = vehicleMakeMasterByReceivedVehicleId;
 	}
 
 	public String getModelName() {

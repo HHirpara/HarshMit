@@ -30,7 +30,7 @@ public class VehicleMakeMaster implements java.io.Serializable {
 	private String createdBy;
 	private Date modified;
 	private String modifiedBy;
-	/*private Set<VehicleModelMaster> vehicleModelMastersForVehicleId = new HashSet<VehicleModelMaster>(0);
+/*	private Set<VehicleModelMaster> vehicleModelMastersForVehicleId = new HashSet<VehicleModelMaster>(0);
 	private Set<VehicleModelMaster> vehicleModelMastersForReceivedVehicleId = new HashSet<VehicleModelMaster>(0);
 */
 	public VehicleMakeMaster() {
@@ -52,8 +52,8 @@ public class VehicleMakeMaster implements java.io.Serializable {
 		this.createdBy = createdBy;
 		this.modified = modified;
 		this.modifiedBy = modifiedBy;
-	/*	this.vehicleModelMastersForVehicleId = vehicleModelMastersForVehicleId;
-		this.vehicleModelMastersForReceivedVehicleId = vehicleModelMastersForReceivedVehicleId; */
+	//	this.vehicleModelMastersForVehicleId = vehicleModelMastersForVehicleId;
+	//	this.vehicleModelMastersForReceivedVehicleId = vehicleModelMastersForReceivedVehicleId; 
 	}
 
 	public Long getVehicleId() {

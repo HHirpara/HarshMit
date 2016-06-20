@@ -1,39 +1,42 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Jun 1, 2016 6:31:43 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="org.arpit.java2blog.bean.VehicleModelMaster" table="vehicle_model_master" catalog="sharemyridewebservice">
-        <id name="modelId" type="java.lang.Long">
-            <column name="MODEL_ID" />
-            <generator class="identity" />
-        </id>
-        <many-to-one name="vehicleMakeMasterByVehicleId" class="org.entity.VehicleMakeMaster" fetch="select">
-            <column name="VEHICLE_ID" />
-        </many-to-one>
-        <many-to-one name="vehicleMakeMasterByReceivedVehicleId" class="org.entity.VehicleMakeMaster" fetch="select">
-            <column name="RECEIVED_VEHICLE_ID" />
-        </many-to-one>
-        <property name="modelName" type="string">
-            <column name="MODEL_NAME" length="45" not-null="true" />
-        </property>
-        <property name="modelCode" type="string">
-            <column name="MODEL_CODE" length="30" not-null="true" />
-        </property>
-        <property name="receivedModelId" type="string">
-            <column name="RECEIVED_MODEL_ID" length="30" not-null="true" />
-        </property>
-        <property name="createdBy" type="string">
-            <column name="CREATED_BY" length="30" />
-        </property>
-        <property name="created" type="timestamp">
-            <column name="CREATED" length="19" />
-        </property>
-        <property name="modifiedBy" type="string">
-            <column name="MODIFIED_BY" length="30" />
-        </property>
-        <property name="modified" type="timestamp">
-            <column name="MODIFIED" length="19" />
-        </property>
-    </class>
+ <class catalog="sharemyridewebservice"
+  name="org.bean.VehicleModelMaster" table="vehicle_model_master">
+  <id name="modelId" type="java.lang.Long">
+   <column name="MODEL_ID"/>
+   <generator class="identity"/>
+  </id>
+  <many-to-one class="org.bean.VehicleMakeMaster" fetch="select"
+   foreign-key="VEHICLE_ID" name="vehicleMakeMasterByVehicleId">
+   <column name="VEHICLE_ID"/>
+  </many-to-one>
+  <many-to-one class="org.bean.VehicleMakeMaster" fetch="select"
+   foreign-key="RECEIVED_VEHICLE_ID" name="vehicleMakeMasterByReceivedVehicleId">
+   <column name="RECEIVED_VEHICLE_ID"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="modelName" type="string">
+   <column length="45" name="MODEL_NAME" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="modelCode" type="string">
+   <column length="30" name="MODEL_CODE" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="receivedModelId" type="string">
+   <column length="30" name="RECEIVED_MODEL_ID" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="createdBy" type="string">
+   <column length="30" name="CREATED_BY"/>
+  </property>
+  <property generated="never" lazy="false" name="created" type="timestamp">
+   <column length="19" name="CREATED"/>
+  </property>
+  <property generated="never" lazy="false" name="modifiedBy" type="string">
+   <column length="30" name="MODIFIED_BY"/>
+  </property>
+  <property generated="never" lazy="false" name="modified" type="timestamp">
+   <column length="19" name="MODIFIED"/>
+  </property>
+ </class>
 </hibernate-mapping>
