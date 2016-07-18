@@ -8,9 +8,12 @@
             <column name="MODEL_ID" />
             <generator class="identity" />
         </id>
-        <many-to-one name="vehicleMakeMasterByVehicleId" class="org.bean.VehicleMakeMaster" fetch="select">
-            <column name="VEHICLE_ID" />
-        </many-to-one>
+        <property name="vehicleMakeMasterByVehicleId" type="long">
+            <column name="VEHICLE_ID" not-null="true" />
+        </property>
+        <property name="vehicleMakeMasterByReceivedVehicleId" type="long">
+            <column name="RECEIVED_VEHICLE_ID" not-null="true" />
+        </property>
         <property name="modelName" type="string">
             <column name="MODEL_NAME" length="80" not-null="true" />
         </property>
