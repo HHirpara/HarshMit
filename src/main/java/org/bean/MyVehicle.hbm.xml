@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 20, 2016 11:51:30 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.bean.MyVehicle" table="my_vehicle" catalog="sharemyridewebservice">
+        <id name="myVehicleId" type="long">
+            <column name="MY_VEHICLE_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="vehicleModelMaster" type="long">
+            <column name="VEHICLE_MODEL_ID" not-null="true" />
+        </property>
+        <property name="user" type="long">
+            <column name="USER_ID" not-null="true" />
+        </property>
+        <property name="vehicleMakeMaster" type="long">
+            <column name="VEHICLE_MAKE_ID" not-null="true" />
+        </property>
+        <property name="style" type="string">
+            <column name="STYLE" length="45" />
+        </property>
+        <property name="vehicleNumber" type="string">
+            <column name="VEHICLE_NUMBER" length="45" />
+        </property>
+        <property name="color" type="string">
+            <column name="COLOR" length="45" />
+        </property>
+        <property name="totalSeats" type="java.lang.Integer">
+            <column name="TOTAL_SEATS" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="19" />
+        </property>
+        <property name="modifiedDate" type="timestamp">
+            <column name="MODIFIED_DATE" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

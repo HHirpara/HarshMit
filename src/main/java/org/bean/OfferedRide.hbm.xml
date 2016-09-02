@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 18, 2016 4:06:33 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.bean.OfferedRide" table="offered_ride" catalog="sharemyridewebservice">
+        <id name="offeredRideId" type="long">
+            <column name="OFFERED_RIDE_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="myVehicle" type="long">
+            <column name="MY_VEHICLE_ID" />
+        </property>
+        <property name="user" type="long">
+            <column name="USER_ID" not-null="true" />
+        </property>
+        <property name="fromLocation" type="string">
+            <column name="FROM_LOCATION" length="100" not-null="true" />
+        </property>
+        <property name="toLocation" type="string">
+            <column name="TO_LOCATION" length="100" not-null="true" />
+        </property>
+        <property name="startDatetime" type="timestamp">
+            <column name="START_DATETIME" length="19" />
+        </property>
+        <property name="isRoundTrip" type="java.lang.Byte">
+            <column name="IS_ROUND_TRIP" />
+        </property>
+        <property name="returnDatetime" type="timestamp">
+            <column name="RETURN_DATETIME" length="19" />
+        </property>
+        <property name="luggage" type="java.lang.Byte">
+            <column name="LUGGAGE" />
+        </property>
+        <property name="offeredSeats" type="java.lang.Byte">
+            <column name="OFFERED_SEATS" />
+        </property>
+        <property name="preferredGender" type="java.lang.Byte">
+            <column name="PREFERRED_GENDER" />
+        </property>
+        <property name="timeAdjustment" type="java.lang.Byte">
+            <column name="TIME_ADJUSTMENT" />
+        </property>
+        <property name="detour" type="java.lang.Byte">
+            <column name="DETOUR" />
+        </property>
+    </class>
+</hibernate-mapping>

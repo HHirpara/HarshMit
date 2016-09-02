@@ -20,6 +20,7 @@
         <mapping resource="org/bean/VehicleMakeMaster.hbm.xml" />
         <mapping resource="org/bean/VehicleModelMaster.hbm.xml" />
         <mapping resource="org/bean/MyVehicle.hbm.xml" />
+        <mapping resource="org/bean/OfferedRide.hbm.xml" />
         
     </session-factory>
 </hibernate-configuration>
