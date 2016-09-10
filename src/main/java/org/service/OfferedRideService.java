@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.bean.OfferedRide;
+import org.bean.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -37,9 +38,10 @@ public class OfferedRideService {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-
+	
 	public void persist(OfferedRide transientInstance) {
-		log.debug("persisting OfferedRide instance");
+		System.out.println("in for call");
+		log.debug("persisting OfferedRide instance"+transientInstance.toString());
 		try {
 			entityManager.persist(transientInstance);
 			log.debug("persist successful");
@@ -118,6 +120,22 @@ public class OfferedRideService {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	
+	public OfferedRide saveRide(OfferedRide instance) {
+		log.debug("saving User instance");
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			Transaction tx = session.beginTransaction();
+			session.saveOrUpdate(instance);
+			tx.commit();
+			log.debug("saved successful");
+			return instance;
+		} catch (RuntimeException re) {
+			log.error("attach failed", re);
+			throw re;
+		}
 	}
 
 }

@@ -3,10 +3,10 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 18, 2016 4:06:33 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="org.bean.OfferedRide" table="offered_ride" catalog="sharemyridewebservice">
-        <id name="offeredRideId" type="long">
+    <class name="org.bean.OfferedRide" table="offered_ride" catalog="sharemyridewebservice" optimistic-lock="version">
+        <id name="offeredRideId" type="java.lang.Long">
             <column name="OFFERED_RIDE_ID" />
-            <generator class="assigned" />
+             <generator class="identity" />
         </id>
         <property name="myVehicle" type="long">
             <column name="MY_VEHICLE_ID" />

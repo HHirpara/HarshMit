@@ -6,6 +6,7 @@ import java.util.List;
 import org.bean.OfferedRide;
 import org.service.OfferedRideService;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,13 +29,14 @@ public class OfferedRideController {
 	}
 			
 	@RequestMapping(value = "/addOfferedRide/", method = RequestMethod.POST, headers = "Accept=application/json")
-	public List<OfferedRide> addOfferedRide(OfferedRide offeredRide){
-		//List<OfferedRide> mylist = offeredRideService.findByUserID();
+	public List<OfferedRide> addOfferedRide(@RequestBody OfferedRide offeredRide){
+		System.out.println("offered ride"+offeredRide.toString());
+		 offeredRideService.saveRide(offeredRide);
 		return null;
 	}
 	
 	@RequestMapping(value = "/updateOfferedRide/{userID}", method = RequestMethod.PUT, headers = "Accept=application/json")
-	public List<OfferedRide> updateOfferedRide(OfferedRide offeredRide){
+	public List<OfferedRide> updateOfferedRide(@RequestBody OfferedRide offeredRide){
 		//List<OfferedRide> mylist = offeredRideService.findByUserID();
 		return null;
 	}
