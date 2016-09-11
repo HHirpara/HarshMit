@@ -27,18 +27,27 @@ public class OfferedRideController {
 		List<OfferedRide> mylist = offeredRideService.findByUserID(userID);
 		return mylist;
 	}
-			
+		
+	
+	
+	@RequestMapping(value = "/findAvailableRides/", method = RequestMethod.POST, headers = "Accept=application/json")
+	public List<OfferedRide> findAvailableRides(@RequestBody OfferedRide offeredRide){
+		System.out.println("offered ride"+offeredRide.toString());
+		List<OfferedRide> mylist = offeredRideService.findAvailableRides(offeredRide);
+		return mylist;
+	}
 	@RequestMapping(value = "/addOfferedRide/", method = RequestMethod.POST, headers = "Accept=application/json")
-	public List<OfferedRide> addOfferedRide(@RequestBody OfferedRide offeredRide){
+	public OfferedRide addOfferedRide(@RequestBody OfferedRide offeredRide){
 		System.out.println("offered ride"+offeredRide.toString());
 		 offeredRideService.saveRide(offeredRide);
-		return null;
+		return offeredRide;
 	}
 	
-	@RequestMapping(value = "/updateOfferedRide/{userID}", method = RequestMethod.PUT, headers = "Accept=application/json")
-	public List<OfferedRide> updateOfferedRide(@RequestBody OfferedRide offeredRide){
-		//List<OfferedRide> mylist = offeredRideService.findByUserID();
-		return null;
+	@RequestMapping(value = "/updateOfferedRide/", method = RequestMethod.POST, headers = "Accept=application/json")
+	public OfferedRide updateOfferedRide(@RequestBody OfferedRide offeredRide){
+		System.out.println("offered ride"+offeredRide.toString());
+		 offeredRideService.saveRide(offeredRide);
+		return offeredRide;
 	}
 	
 /*	@RequestMapping(value = "/deleteOfferedRide/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")

@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.bean.OfferedRide;
-import org.bean.User;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -99,6 +99,51 @@ public class OfferedRideService {
 			Session session = sessionFactory.getCurrentSession();
 			Transaction tx = session.beginTransaction();
 			result = (List<OfferedRide>) session.createCriteria(OfferedRide.class).add(Restrictions.eq("user", userID)).list();
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
+	
+	// save ,update ,user ride ,ride ...
+	
+	@SuppressWarnings("unchecked")
+	public List<OfferedRide> findAvailableRides(OfferedRide offeredRide){
+		
+		List<OfferedRide> result = new ArrayList<OfferedRide>();
+		try{
+			Session session = sessionFactory.getCurrentSession();
+			Transaction tx = session.beginTransaction();
+			Criteria criteria = session.createCriteria(OfferedRide.class);
+			if(offeredRide!=null){
+				if(offeredRide.getUser() !=null){
+					criteria.add(Restrictions.eq("user", offeredRide.getUser()));		
+			
+				}
+				if(offeredRide.getFromLocation()!=null){
+					criteria.add(Restrictions.eq("fromLocation", offeredRide.getFromLocation()));		
+				}
+		
+				if(offeredRide.getToLocation()!=null){
+					criteria.add(Restrictions.eq("toLocation", offeredRide.getToLocation()));		
+				}
+		
+				if(offeredRide.getToLocation()!=null){
+					criteria.add(Restrictions.eq("toLocation", offeredRide.getToLocation()));		
+				}
+				if(offeredRide.getStartDatetime()!=null){
+					System.out.println("in from date "+offeredRide.getStartDatetime());
+					criteria.add(Restrictions.ge("startDatetime", offeredRide.getStartDatetime()));		
+				}
+				
+				
+				
+				result =criteria.list();
+				
+			}
+		
 			tx.commit();
 		}catch(Exception e){
 			e.printStackTrace();

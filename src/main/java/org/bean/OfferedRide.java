@@ -18,8 +18,8 @@ public class OfferedRide implements java.io.Serializable {
 	@Column(name="OFFERED_RIDE_ID")
 	@GeneratedValue 
 	private Long offeredRideId;
-	private long myVehicle;
-	private long user;
+	private Long myVehicle;
+	private Long user;
 	private String fromLocation;
 	private String toLocation;
 	private Date startDatetime;
@@ -34,14 +34,14 @@ public class OfferedRide implements java.io.Serializable {
 	public OfferedRide() {
 	}
 
-	public OfferedRide(Long offeredRideId, long user, String fromLocation, String toLocation) {
+	public OfferedRide(Long offeredRideId, Long user, String fromLocation, String toLocation) {
 		this.offeredRideId = offeredRideId;
 		this.user = user;
 		this.fromLocation = fromLocation;
 		this.toLocation = toLocation;
 	}
 
-	public OfferedRide(Long offeredRideId, long myVehicle, long user, String fromLocation, String toLocation,
+	public OfferedRide(Long offeredRideId, Long myVehicle, Long user, String fromLocation, String toLocation,
 			Date startDatetime, Byte isRoundTrip, Date returnDatetime, Byte luggage, Byte offeredSeats,
 			Byte preferredGender, Byte timeAdjustment, Byte detour) {
 		this.offeredRideId = offeredRideId;
@@ -69,20 +69,20 @@ public class OfferedRide implements java.io.Serializable {
 	}
 
 
-	public long getMyVehicle() {
+	public Long getMyVehicle() {
 		return this.myVehicle;
 	}
 
-	public void setMyVehicle(long myVehicle) {
+	public void setMyVehicle(Long myVehicle) {
 		this.myVehicle = myVehicle;
 	}
 
 
-	public long getUser() {
+	public Long getUser() {
 		return this.user;
 	}
 
-	public void setUser(long user) {
+	public void setUser(Long user) {
 		this.user = user;
 	}
 
