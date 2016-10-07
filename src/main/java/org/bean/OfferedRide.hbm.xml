@@ -41,8 +41,20 @@
         <property name="timeAdjustment" type="java.lang.Byte">
             <column name="TIME_ADJUSTMENT" />
         </property>
-        <property name="detour" type="java.lang.Byte">
-            <column name="DETOUR" />
+        <property name="PICK_UP_FLEXIBILITY" type="java.lang.Byte">
+            <column name="PICK_UP_FLEXIBILITY" />
+        </property>
+        <property name="LANGUAGE" type="string">
+            <column name="LANGUAGE" />
+        </property>
+        <property name="PET" type="java.lang.Byte">
+            <column name="PET" />
+        </property>
+        <property name="CREATED_DATE" type="timestamp">
+            <column name="CREATED_DATE" />
+        </property>
+        <property name="MODIFIED_DATE" type="timestamp">
+            <column name="MODIFIED_DATE" />
         </property>
     </class>
 </hibernate-mapping>
