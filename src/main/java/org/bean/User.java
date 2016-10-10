@@ -42,6 +42,8 @@ public class User implements java.io.Serializable {
 	private String createdBy;
 	private Date modified;
 	private String modifiedBy;
+	private boolean isAuthorized;
+	private String validToken;
 
 	public User() {
 	}
@@ -54,7 +56,7 @@ public class User implements java.io.Serializable {
 	public User(String firstname, String lastname, String gender, String email, String password, String facebookId,
 			String googleId, String twitterId, Date birthdate, String contact, String address1, String address2,
 			String city, String state, String country, Date created, String createdBy, Date modified,
-			String modifiedBy) {
+			String modifiedBy, boolean isAuthorized, String validToken) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.gender = gender;
@@ -74,6 +76,8 @@ public class User implements java.io.Serializable {
 		this.createdBy = createdBy;
 		this.modified = modified;
 		this.modifiedBy = modifiedBy;
+		this.isAuthorized = isAuthorized;
+		this.validToken = validToken;
 	}
 
 	public Long getUserId() {
@@ -236,5 +240,19 @@ public class User implements java.io.Serializable {
 		this.modifiedBy = modifiedBy;
 	}
 
-		
+	public boolean getIsAuthorized() {
+		return this.isAuthorized;
+	}
+
+	public void setIsAuthorized(boolean isAuthorized) {
+		this.isAuthorized = isAuthorized;
+	}
+
+	public String getValidToken() {
+		return this.validToken;
+	}
+
+	public void setValidToken(String validToken) {
+		this.validToken = validToken;
+	}		
 }

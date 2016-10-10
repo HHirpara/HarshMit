@@ -1,5 +1,6 @@
 package org.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.bean.User;
@@ -28,11 +29,22 @@ public class UserController {
 	}
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST, headers = "Accept=application/json")
 	public User adduser(@RequestBody User user) {
+		Date curerntDate = new Date(System.currentTimeMillis());
+		user.setCreated(curerntDate);
+		user.setModified(curerntDate);
+		if(user.getCreatedBy() == null || user.getCreatedBy() == ""){
+			user.setModifiedBy("webservice");
+			user.setCreatedBy("webservice");
+		}
 		return userService.saveUser(user);
 	}
 
 	@RequestMapping(value = "/updateUser/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
 	public User updateUser(@RequestBody User user) {
+		Date curerntDate = new Date(System.currentTimeMillis());
+		user.setModified(curerntDate);
+		if(user.getModifiedBy() == null || user.getModifiedBy()== "")
+			user.setModifiedBy("webservice");
 		return userService.updateUser(user);
 
 	}
