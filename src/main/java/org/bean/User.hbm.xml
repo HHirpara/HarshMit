@@ -65,5 +65,11 @@
         <property name="modifiedBy" type="string">
             <column name="MODIFIED_BY" length="30" />
         </property>
+        <property name="isAuthorized" type="yes_no">
+            <column name="IS_AUTHOROZED"  />
+        </property>
+        <property name="validToken" type="string">
+            <column name="VALID_TOKEN" length="45" />
+        </property>                
     </class>
 </hibernate-mapping>
